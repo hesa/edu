@@ -25,19 +25,29 @@ package com.sandklef.edu.Examples.ConsoleMenu;
 
 import com.sandklef.edu.ConsoleMenu.*;
 
-public class MenuExample {
+public class MenuExtendedExample extends ConsoleMenu {
 
-    public static void main(String args[]) {
-	ConsoleMenu menu = new ConsoleMenu("-= MenuExample =-");
-	Menu1 m1 = new Menu1();
-
-	menu.addMenuItem(m1, "Add Member");
-	menu.addMenuItem(new MenuItem(){
-                             public void menuItemSelected() { 
-				 System.out.println(" removeMember() code"); } 
-			 },"Remove member" );
-
-	menu.run();
+    public void createMenu() {
+	setMenuTitle ("-= MenuExample =-");
+	addMenuItem(new MenuItem(){
+		public void menuItemSelected() 
+		{ System.out.println("Buy Mudhoney records") ; } },
+		    "Mudhoney" );
+	addMenuItem(new MenuItem(){
+		public void menuItemSelected() 
+		{ System.out.println("Buy Mule records") ; } },
+	    "Mule" );
+	addMenuItem(new MenuItem(){
+		public void menuItemSelected() 
+		{ System.out.println("Buy Will Oldham records") ; } },
+	    "Will" );
+	
+	run();
     }
 
+    public static void main(String args[]) {
+	MenuExtendedExample me = new MenuExtendedExample();
+	me.createMenu();
+    }
+    
 }
