@@ -128,7 +128,12 @@ public class ConsoleMenu {
 	    Scanner userInput = new Scanner(System.in);
 	    String choice = userInput.nextLine();
 	    
-	    int index = Integer.parseInt(choice);
+	    int index = menuItems.size();
+	    try { 
+		index = Integer.parseInt(choice);
+	    } catch (java.lang.NumberFormatException e) {
+		;
+	    }
 	    if ( index >= 0 && index < menuItems.size() ) {
 		menuItems.get(index).getMenuItem().menuItemSelected();
 	    } else if ( index == menuItems.size() ) {
