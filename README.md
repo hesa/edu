@@ -1,11 +1,11 @@
-edu
-===
+#Educational software#
 
-Software used for educational purposes
+Some sofoftware I've written for use in education.
 
-#ConsoleMenu#
+##ConsoleMenu##
 
 The main purpose is, rather thanease up writing a console menu, to
 show the use of Interfaces. In the examples we show how to create
 and add MenuItem classes and also how to add anonymous
 classes/objects.
+
