@@ -31,7 +31,7 @@ package com.sandklef.edu.ConsoleMenu;
 import java.util.ArrayList;
 import java.util.Scanner; 
 
-public class ConsoleMenu {
+public class ConsoleMenu implements MenuItem {
 
     private String title;
     private ArrayList<InternalMenuItem> menuItems;
@@ -56,6 +56,10 @@ public class ConsoleMenu {
     }
 
 
+    public void menuItemSelected() {
+	run();
+    }
+    
 
     /**
      *
