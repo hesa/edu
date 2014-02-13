@@ -5,6 +5,9 @@
  * to show the use of Interfaces. In the examples we show how to
  * create and add MenuItem classes and also how to add anonymous
  * classes/objects.
+ * 
+ * ConsoleMenu supports sub menu. Simply add a ConsoleMenu to another
+ * ConsoleMenu using the addMenuItem method
  *
  * You can either extend the ConsoleMenu class or create an object
  * from it, just as you can with JPanel.
