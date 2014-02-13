@@ -108,6 +108,12 @@ public class ConsoleMenu implements MenuItem {
     }
 
 
+    public void printNewLines(int times) {
+	for (int k=0;k<times;k++) {
+	    System.out.println("\n");
+	}
+    }
+
     /**
      *
      * Displays the menu containing all menu items added by user.  An
@@ -119,6 +125,7 @@ public class ConsoleMenu implements MenuItem {
      */
     public void run() {
 	while (true) {
+	    printNewLines(1);
 	    System.out.println(title);
 	    System.out.println("=============");
 	    int i=0;
@@ -145,6 +152,7 @@ public class ConsoleMenu implements MenuItem {
 	    } else {
 		System.out.println("Invalid input (\"" +  choice +"\")");
 	    }
+	    printNewLines(4);
 	}
     }
 

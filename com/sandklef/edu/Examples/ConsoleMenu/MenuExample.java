@@ -29,6 +29,7 @@ public class MenuExample {
 
     public static void main(String args[]) {
 	ConsoleMenu menu = new ConsoleMenu("-= MenuExample =-");
+
 	Menu1 m1 = new Menu1();
 
 	menu.addMenuItem(m1, "Add Member");
