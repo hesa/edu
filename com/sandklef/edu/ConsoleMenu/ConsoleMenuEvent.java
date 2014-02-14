@@ -21,21 +21,26 @@
  * MA  02110-1301, USA.                                              
  ****/
 
-/**
- *
- * Interface used in ConsoleMenu. Classes implementing this interface
- * can be added as items to consolemenu.
- *
- */
 package com.sandklef.edu.ConsoleMenu;
 
-public interface MenuItem {
+import java.util.EventObject;
 
-    /**
-     *
-     * This method is invoked by ConsoleMenu when the item is selected
-     *
-     */
-    public void menuItemSelected(ConsoleMenuEvent ce);
+public class ConsoleMenuEvent /*extends EventObject*/ {
+
+    String menuItemName;
+    String menuName;
+
+    public ConsoleMenuEvent(String menuItemName, String menuName) {
+	this.menuItemName = menuItemName;
+	this.menuName     = menuName;
+    }
+
+    public String getMenuItemTitle() {
+	return menuItemName;
+    }
+
+    public String getMenuTitle() {
+	return menuName;
+    }
 
 }

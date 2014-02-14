@@ -33,6 +33,9 @@ import java.util.Scanner;
 
 public class ConsoleMenu implements MenuItem {
 
+    private int    levels;
+    private final String levelMark = " ";
+    private String preMenu="";
     private String title;
     private ArrayList<InternalMenuItem> menuItems;
     boolean debugMode = false;
@@ -56,8 +59,21 @@ public class ConsoleMenu implements MenuItem {
     }
 
 
-    public void menuItemSelected() {
+    /* We can (hrmpfsfs?) assume that is CM itself who made this call */
+    public void menuItemSelected(ConsoleMenuEvent e) {
+	String itemTitle = e.getMenuItemTitle();
+	String menuTitle = e.getMenuTitle();
+	//	System.out.println("INTERNAL PRESS" + itemTitle + " " + menuTitle);
+	String savedPreMenu = preMenu;
+	if (preMenu.equals("")) {
+	    preMenu = menuTitle;
+	} else {
+	    preMenu = preMenu + "->" + menuTitle;
+	}
+	levels++;
 	run();
+	levels--;
+	preMenu = savedPreMenu;
     }
     
 
@@ -93,6 +109,16 @@ public class ConsoleMenu implements MenuItem {
 	title = s;
     }
 
+    /**
+     *
+     * Gets the title of the ConsoleMenu
+     *
+     * @return the title for ConsoleMenu
+     */
+    public String getMenuTitle() {
+	return title ;
+    }
+
     private void debug(String s) {
 	if (debugMode) {
 	    System.out.println(s);
@@ -114,6 +140,13 @@ public class ConsoleMenu implements MenuItem {
 	}
     }
 
+    public void printLevelMarks() {
+	for (int k=0;k<levels;k++) {
+	    System.out.print(levelMark);
+	}
+	System.out.print(" ");
+    }
+
     /**
      *
      * Displays the menu containing all menu items added by user.  An
@@ -126,13 +159,20 @@ public class ConsoleMenu implements MenuItem {
     public void run() {
 	while (true) {
 	    printNewLines(1);
+	    if (!preMenu.equals("")) {
+		System.out.println("[ " + preMenu + "] ==> ");
+	    }
+	    printLevelMarks();	    
 	    System.out.println(title);
+	    printLevelMarks();	    
 	    System.out.println("=============");
 	    int i=0;
 	    for (i=0; i<menuItems.size(); i++) {
+		printLevelMarks();
 		System.out.println(i + ".  " + 
 				   menuItems.get(i).getTitle());
 	    }
+	    printLevelMarks();	    
 	    System.out.println(i + ".  Exit menu");
 	    
 	    System.out.print("> ");
@@ -146,7 +186,10 @@ public class ConsoleMenu implements MenuItem {
 		;
 	    }
 	    if ( index >= 0 && index < menuItems.size() ) {
-		menuItems.get(index).getMenuItem().menuItemSelected();
+		InternalMenuItem mi = menuItems.get(index);
+		ConsoleMenuEvent ce = new ConsoleMenuEvent(mi.getTitle(),
+							   getMenuTitle());
+		mi.getMenuItem().menuItemSelected(ce);
 	    } else if ( index == menuItems.size() ) {
 		return;
 	    } else {

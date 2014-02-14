@@ -25,48 +25,73 @@ package com.sandklef.edu.Examples.ConsoleMenu;
 
 import com.sandklef.edu.ConsoleMenu.*;
 
-public class SubMenuExample {
+public class SubMenuExample extends ConsoleMenu implements MenuItem {
 
-    public static void main(String args[]) {
+    private final String LIST_MENU_ITEM   = "List Members";
+    private final String PLAYER_MENU_ITEM = "Player";
+    private final String PARENT_MENU_ITEM = "Parent";
+    private final String COACH_MENU_ITEM  = "Coach";
+
+    public void buildMenu() {
 	/* 
 	 * Top menu
 	 *
 	 */
-
-	ConsoleMenu menu = new ConsoleMenu("-= Member management =-");
-
-
+	setMenuTitle("Member management");
 
 	/*
 	 * Sub menu: List Members
 	 *
 	*/
-	ConsoleMenu listMenu = new ConsoleMenu("List members");
+	ConsoleMenu listMenu = new ConsoleMenu(LIST_MENU_ITEM);
 
-	listMenu.addMenuItem(new MenuItem(){
-                             public void menuItemSelected() { 
-				 System.out.println(" -- listing Player...."); } 
-			 },"Players" );
-	listMenu.addMenuItem(new MenuItem(){
-                             public void menuItemSelected() { 
-				 System.out.println(" -- listing parents..."); } 
-			 },"Parents" );
-	listMenu.addMenuItem(new MenuItem(){
-                             public void menuItemSelected() { 
-				 System.out.println(" -- listing coaches..."); } 
-			 },"Coaches" );
+	listMenu.addMenuItem(this, PLAYER_MENU_ITEM);
+	listMenu.addMenuItem(this, PARENT_MENU_ITEM );
+	listMenu.addMenuItem(this, COACH_MENU_ITEM );
+
+	// Adding listMenu to it self
+	// A bit stupid, but good for layout test and for making sure
+	// sub menues are created as they should
+	listMenu.addMenuItem(listMenu, LIST_MENU_ITEM );
+
 
 	// Add listMenu to top menu
-	menu.addMenuItem(listMenu,"List members (--->)" );
+	addMenuItem(listMenu, LIST_MENU_ITEM);
 
 	// Add remove menu item to top menu
-	menu.addMenuItem(new MenuItem(){
-                             public void menuItemSelected() { 
-				 System.out.println(" removeMember() code"); } 
-			 },"Remove member" );
+	addMenuItem(new MenuItem(){
+		public void menuItemSelected(ConsoleMenuEvent e) {
+		    String itemTitle = e.getMenuItemTitle();
+		    String menuTitle = e.getMenuTitle();
+		    System.out.println(" removeMember() code"); } 
+	    },"Remove member" );
 
 	// Display the menu
-	menu.run();
+	run();
     }
+   
+
+    public void menuItemSelected(ConsoleMenuEvent e) {
+	String itemTitle = e.getMenuItemTitle();
+	String menuTitle = e.getMenuTitle();
+
+	System.out.println("menuItemSelected(\"" + itemTitle + "\", \"" + menuTitle + "\") ");
+
+	if (menuTitle.equals(LIST_MENU_ITEM)) { 
+	    if (itemTitle.equals(PLAYER_MENU_ITEM)) {
+		System.out.println(" Will list players...");
+	    } else if (itemTitle.equals(PARENT_MENU_ITEM)) {
+		System.out.println(" Will list parents...");
+	    } else if (itemTitle.equals(COACH_MENU_ITEM)) {
+		System.out.println(" Will list coaches...");
+	    }
+	} 
+    }
+
+    public static void main(String args[]) {
+	SubMenuExample sme = new SubMenuExample();
+	sme.buildMenu();
+    }
+
 
 }
