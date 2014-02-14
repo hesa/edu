@@ -34,7 +34,7 @@ public class MenuExample {
 
 	menu.addMenuItem(m1, "Add Member");
 	menu.addMenuItem(new MenuItem(){
-                             public void menuItemSelected() { 
+                             public void menuItemSelected(ConsoleMenuEvent e) { 
 				 System.out.println(" removeMember() code"); } 
 			 },"Remove member" );
 

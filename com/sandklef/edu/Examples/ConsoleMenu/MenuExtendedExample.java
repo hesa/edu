@@ -30,15 +30,15 @@ public class MenuExtendedExample extends ConsoleMenu {
     public void createMenu() {
 	setMenuTitle ("-= MenuExample =-");
 	addMenuItem(new MenuItem(){
-		public void menuItemSelected() 
+		public void menuItemSelected(ConsoleMenuEvent e) 
 		{ System.out.println("Buy Mudhoney records") ; } },
 		    "Mudhoney" );
 	addMenuItem(new MenuItem(){
-		public void menuItemSelected() 
+		public void menuItemSelected(ConsoleMenuEvent e) 
 		{ System.out.println("Buy Mule records") ; } },
 	    "Mule" );
 	addMenuItem(new MenuItem(){
-		public void menuItemSelected() 
+		public void menuItemSelected(ConsoleMenuEvent e) 
 		{ System.out.println("Buy Will Oldham records") ; } },
 	    "Will" );
 	

@@ -24,10 +24,11 @@
 package com.sandklef.edu.Examples.ConsoleMenu;
 
 import com.sandklef.edu.ConsoleMenu.MenuItem;
+import com.sandklef.edu.ConsoleMenu.ConsoleMenuEvent;
 
 public class Menu1 implements MenuItem {
 
-    public void menuItemSelected() {
+    public void menuItemSelected(ConsoleMenuEvent e) {
 	System.out.println(" Menu item Menu1 selcted");
     }
 
