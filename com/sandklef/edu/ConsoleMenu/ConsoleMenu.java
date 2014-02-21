@@ -79,7 +79,7 @@ public class ConsoleMenu implements MenuItem {
 
     /**
      *
-     * Constructs a Constructs with default Menu title: "ConsoleMenu"
+     * Constructs a ConsoleMenu with default Menu title: "ConsoleMenu"
      *
      */
     public ConsoleMenu() {
@@ -90,7 +90,7 @@ public class ConsoleMenu implements MenuItem {
 
     /**
      *
-     * Constructs a Constructs with title as given by user
+     * Constructs a ConsoleMenu with title as given by user
      *
      * @param s Title for ConsoleMenu
      */
@@ -179,8 +179,12 @@ public class ConsoleMenu implements MenuItem {
 	    Scanner userInput = new Scanner(System.in);
 	    String choice = userInput.nextLine();
 	    
+	    /* setting the index to max value (last in menu)......
+	     * 
+	     */
 	    int index = menuItems.size();
-	    try { 
+	    try {
+		// Try to parse the user input tp an integer
 		index = Integer.parseInt(choice);
 	    } catch (java.lang.NumberFormatException e) {
 		;
@@ -201,13 +205,24 @@ public class ConsoleMenu implements MenuItem {
 
     /**
      *
-     *@param m - menutiem containing the code to perform when chosen
+     *@param m - menuitem containing the code to perform when chosen
      *@param s - title for the menu item
      *
      */
     public void addMenuItem(MenuItem m, String s) {
 	debug("Adding MenuItem: \"" + " \"" + s + "\" ");
 	menuItems.add(new InternalMenuItem(s, m));
+    }
+
+    /**
+     *
+     *@param c - menuitem containing the code to perform when chosen
+     *@param s - title for the menu item
+     *
+     */
+    public void addMenuItem(ConsoleMenu m) {
+	debug("Adding consolemenu: \"" + " \"" + m + "\" ");
+	menuItems.add(new InternalMenuItem(m.getMenuTitle(),m));
     }
 
 }

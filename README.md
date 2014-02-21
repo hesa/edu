@@ -6,8 +6,9 @@
 
 I have been teaching embedded programming using C, Java, about Free
 and Open Source Software (I have even taught Software Processes). How
-well I did, and still do, that I leave to others to say. I really hope
-I don't suck to much. I do not write this page thinking I am an
+well I did, and still do, I leave to others to say. I really hope I
+don't suck too much in general. Too some I am horribly bad and to some
+I might even be quite good. I do not write this page thinking I am an
 awesome instructor or programmering. I think the main reason I write
 this is that I love programming (programming makes my brain feel good)
 and I really love seeing students show that smile when they "finally"
