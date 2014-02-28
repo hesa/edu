@@ -35,11 +35,12 @@ The language consists of:
  * down
  * left
  * right
+
 with thoughts on adding support for simple iterations....
 
 ###koder###
 
-After deep (hrmpfh?) discussion about how to teach Java we've
+After deep (hrmpfh?) discussions about how to teach Java we've
 concluded that the main barrier is that you have to crate a class with
 the dreaded main method. With this little piece of demo software you
 can skip all that and simply write Java in a window and execute it
