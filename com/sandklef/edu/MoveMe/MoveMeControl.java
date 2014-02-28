@@ -8,9 +8,14 @@ import java.awt.GridLayout;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 
-public class MoveMeControl extends JFrame {
+
+
+public class MoveMeControl extends JFrame  {
     
     ControlPanel control;
+    FindControl  finder;
+    Field f;
+
 
     /**
      *
@@ -26,17 +31,24 @@ public class MoveMeControl extends JFrame {
 
 	
     public MoveMeControl (int xSize, int ySize, int cols, int rows) {
-	Field f = new Field(xSize-100, ySize, 5,5);
+	f = new Field(xSize-100, ySize, cols, rows);
 	setLayout(new GridLayout(1,2));
 	control = new ControlPanel ();
+	finder  = new FindControl (f);
 
 	setMinimumSize(new Dimension(xSize,ySize));
 	add(f);
+	add(finder);
 	add(control);
 	pack();
 	setVisible(true);
  
 	setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
+
+    public Field getField() {
+	return f;
+    }
+    
 
 }
